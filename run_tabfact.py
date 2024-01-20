@@ -25,14 +25,14 @@ from operations import *
 
 
 def main(
-    dataset_path="data/tabfact/test.jsonl",
-    raw2clean_path="data/tabfact/raw2clean.jsonl",
-    model_name="gpt-3.5-turbo-16k-0613",
-    result_dir="./results/debug-tabfact-16k",
-    openai_api_key=None,
+    dataset_path: str = "data/tabfact/test.jsonl",
+    raw2clean_path: str ="data/tabfact/raw2clean.jsonl",
+    model_name: str = "gpt-3.5-turbo-16k-0613",
+    result_dir: str = "results/tabfact",
+    openai_api_key: str = None,
     first_n=-1,
-    n_proc=10,
-    chunk_size=5,
+    n_proc=1,
+    chunk_size=1,
 ):
     dataset = load_tabfact_dataset(dataset_path, raw2clean_path, first_n=first_n)
     gpt_llm = ChatGPT(
