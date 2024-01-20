@@ -52,7 +52,7 @@ If you find this repository useful, please consider citing:
 ```bibtex
 @article{wang2024chain,
   title={Chain-of-Table: Evolving Tables in the Reasoning Chain for Table Understanding},
-  author={Wang, Zilong and Zhang, Hao and Li, Chun-Liang and Eisenschlos, Julian Martin and Perot, Vincent and Wang, Zifeng and Miculicich, Lesly and Fujii, Yasuhisa and Shang, Jingbo and Lee, Chen-Yu and others},
+  author={Wang, Zilong and Zhang, Hao and Li, Chun-Liang and Eisenschlos, Julian Martin and Perot, Vincent and Wang, Zifeng and Miculicich, Lesly and Fujii, Yasuhisa and Shang, Jingbo and Lee, Chen-Yu and Pfister, Tomas},
   journal={arXiv preprint arXiv:2401.04398},
   year={2024}
 }
