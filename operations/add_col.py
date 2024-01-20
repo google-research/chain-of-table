@@ -1,7 +1,7 @@
 import re
 import copy
 import numpy as np
-from utils.helper import table2df, table2string
+from utils.helper import table2string
 
 
 add_column_demo = """To tell the statement is true or false, we can first use f_add_column() to add more columns to the table.

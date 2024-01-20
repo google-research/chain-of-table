@@ -53,7 +53,6 @@ The anwser is: YES"""
 
 
 def simple_query(sample, table_info, llm, debug=False, use_demo=False, llm_options=None):
-    # table_info = get_table_info(sample)
     table_text = table_info["table_text"]
 
     caption = sample["table_caption"]

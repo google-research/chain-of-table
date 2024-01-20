@@ -48,7 +48,6 @@ def group_column_build_prompt(table_text, statement, table_caption=None, num_row
 def group_column_func(
     sample, table_info, llm, llm_options=None, debug=False, skip_op=[]
 ):
-    # table_info = get_table_info(sample, skip_op=skip_op)
     table_text = table_info["table_text"]
 
     table_caption = sample["table_caption"]

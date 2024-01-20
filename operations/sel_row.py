@@ -83,7 +83,6 @@ def select_row_build_prompt(table_text, statement, table_caption=None, num_rows=
 
 
 def select_row_func(sample, table_info, llm, llm_options=None, debug=False):
-    # table_info = get_table_info(sample)
     table_text = table_info["table_text"]
 
     table_caption = sample["table_caption"]

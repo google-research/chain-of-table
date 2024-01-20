@@ -1,5 +1,4 @@
 import copy
-import glob
 import re
 from tqdm import tqdm
 import numpy as np
@@ -367,8 +366,6 @@ def generate_prompt_for_next_step(
     responses = llm.generate_plus_with_score(
         prompt, options=llm_options, end_str="\n\n"
     )
-    # if debug:
-    #     print(responses)
 
     if strategy == "top":
         response = responses[0][0]
