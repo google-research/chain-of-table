@@ -35,6 +35,7 @@ pip install -r requirements.txt
    --chunk_size 1 \
    --openai_api_key <YOUR_KEY>
    ```
+
 2. Run the experiment on the whole dataset
 
    ```shell
@@ -53,7 +54,7 @@ If you find this repository useful, please consider citing:
 @article{wang2024chain,
   title={Chain-of-Table: Evolving Tables in the Reasoning Chain for Table Understanding},
   author={Wang, Zilong and Zhang, Hao and Li, Chun-Liang and Eisenschlos, Julian Martin and Perot, Vincent and Wang, Zifeng and Miculicich, Lesly and Fujii, Yasuhisa and Shang, Jingbo and Lee, Chen-Yu and Pfister, Tomas},
-  journal={arXiv preprint arXiv:2401.04398},
+  journal={ICLR},
   year={2024}
 }
 ```
