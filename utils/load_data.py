@@ -49,3 +49,14 @@ def load_tabfact_dataset(
             info["cleaned_statement"] = info["statement"]
         dataset.append(info)
     return dataset
+
+
+def wrap_input_for_demo(statement, table_caption, table_text, cleaned_statement=None):
+    return {
+        "statement": statement,
+        "table_caption": table_caption,
+        "table_text": table_text,
+        "cleaned_statement": cleaned_statement if cleaned_statement is not None else statement,
+        "chain": [],
+    }
+

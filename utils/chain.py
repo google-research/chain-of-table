@@ -117,7 +117,7 @@ def get_act_func(name):
     except:
 
         def _default_act(table_text, *args, **kwargs):
-            return table_text
+            return copy.deepcopy(table_text)
 
         if "query" not in name:
             print("Unknown operation: ", name)
@@ -142,6 +142,35 @@ def get_table_info(sample, skip_op=[], first_n_op=None):
         table_info = act_func(table_info, operation, skip_op=skip_op)
 
     return table_info
+
+
+def get_table_log(sample, skip_op=[], first_n_op=None):
+    table_text = sample["table_text"]
+    chain = sample["chain"]
+
+    if first_n_op is not None:
+        chain = chain[:first_n_op]
+
+    table_log = []
+
+    table_info = {
+        "table_text": table_text,
+        "act_chain": [],
+    }
+    table_log.append(table_info)
+
+    for operation in chain:
+        operation_name = operation["operation_name"]    
+        act_func = get_act_func(operation_name)
+        table_info = act_func(table_info, operation, skip_op=skip_op)
+        if 'row' in operation_name:
+            table_info['act_chain'][-1] = table_info['_real_select_rows']
+        if 'query' in operation_name:
+            table_info['act_chain'].append(f'{operation_name}()')
+            table_info['cotable_result'] = operation['parameter_and_conf'][0][0]
+        table_log.append(table_info)
+
+    return table_log
 
 
 # Dynmiac Chain Func

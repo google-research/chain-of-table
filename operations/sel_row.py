@@ -182,4 +182,8 @@ def select_row_act(table_info, operation, union_num=2, skip_op=[]):
     table_info["table_text"] = new_table
     selected_row_names = [f"row {x+1}" for x in range(len(real_selected_rows))]
     table_info["act_chain"].append(f"f_select_row({', '.join(selected_row_names)})")
+
+    _real_selected_row_names = [f"row {x-1}" for x in map(int, real_selected_rows)]
+    table_info['_real_select_rows'] = f"f_select_row({', '.join(_real_selected_row_names)})"
+
     return table_info
