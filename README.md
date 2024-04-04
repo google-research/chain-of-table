@@ -61,4 +61,4 @@ If you find this repository useful, please consider citing:
 
 ## Acknowledgement
 
-We thank [Dater](https://arxiv.org/pdf/2301.13808.pdf) for providing the cleaned TabFact dataset and releasing the code.
+We thank [Dater](https://arxiv.org/pdf/2301.13808.pdf) for providing the cleaned TabFact dataset and releasing the [code](https://github.com/AlibabaResearch/DAMO-ConvAI/tree/main/dater). We include the cleaned raw2clean file in the `data/tabfact` directory and the prompts for row/column selection in the `operations/sel_col_row_prompt.py` file under the MIT License.

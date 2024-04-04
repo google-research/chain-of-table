@@ -18,74 +18,7 @@ import re
 import numpy as np
 from utils.helper import table2string
 
-
-select_row_demo = """Using f_row() api to select relevant rows in the given table that support or oppose the statement.
-Please use f_row([*]) to select all rows in the table.
-
-/*
-table caption : 1972 vfl season.
-col : home team | home team score | away team | away team score | venue | crowd | date
-row 1 : st kilda | 13.12 (90) | melbourne | 13.11 (89) | moorabbin oval | 18836 | 19 august 1972
-row 2 : south melbourne | 9.12 (66) | footscray | 11.13 (79) | lake oval | 9154 | 19 august 1972
-row 3 : richmond | 20.17 (137) | fitzroy | 13.22 (100) | mcg | 27651 | 19 august 1972
-row 4 : geelong | 17.10 (112) | collingwood | 17.9 (111) | kardinia park | 23108 | 19 august 1972
-row 5 : north melbourne | 8.12 (60) | carlton | 23.11 (149) | arden street oval | 11271 | 19 august 1972
-row 6 : hawthorn | 15.16 (106) | essendon | 12.15 (87) | vfl park | 36749 | 19 august 1972
-*/
-statement : the away team with the highest score is fitzroy.
-explain : the statement want to check the highest away team score. we need to compare score of away team fitzroy with all others, so we need all rows. use * to represent all rows in the table.
-The answer is : f_row([*])
-
-/*
-table caption : list of largest airlines in central america & the caribbean.
-col : rank | airline | country | fleet size | remarks
-row 1 : 1 | caribbean airlines | trinidad and tobago | 22 | largest airline in the caribbean
-row 2 : 2 | liat | antigua and barbuda | 17 | second largest airline in the caribbean
-row 3 : 3 | cubana de aviaciã cubicn | cuba | 14 | operational since 1929
-row 4 : 4 | inselair | curacao | 12 | operational since 2006
-row 5 : 5 | dutch antilles express | curacao | 4 | curacao second national carrier
-row 6 : 6 | air jamaica | trinidad and tobago | 5 | parent company is caribbean airlines
-row 7 : 7 | tiara air | aruba | 3 | aruba 's national airline
-*/
-statement : the remark on airline of dutch antilles express with fleet size over 4 is curacao second national carrier.
-explain : the statement want to check a record in the table. we cannot find a record perfectly satisfied the statement, the most relevant row is row 5, which describes dutch antilles express airline, remarks is uracao second national carrier and fleet size is 4 not over 4.
-The answer is : f_row([row 5])
-
-/*
-table caption : list of longest - serving soap opera actors.
-col : actor | character | soap opera | years | duration
-row 1 : tom jordon | charlie kelly | fair city | 1989- | 25 years
-row 2 : tony tormey | paul brennan | fair city | 1989- | 25 years
-row 3 : jim bartley | bela doyle | fair city | 1989- | 25 years
-row 4 : sarah flood | suzanne halpin | fair city | 1989 - 2013 | 24 years
-row 5 : pat nolan | barry o'hanlon | fair city | 1989 - 2011 | 22 years
-row 6 : martina stanley | dolores molloy | fair city | 1992- | 22 years
-row 7 : joan brosnan walsh | mags kelly | fair city | 1989 - 2009 | 20 years
-row 8 : jean costello | rita doyle | fair city | 1989 - 2008 , 2010 | 19 years
-row 9 : ciara o'callaghan | yvonne gleeson | fair city | 1991 - 2004 , 2008- | 19 years
-row 10 : celia murphy | niamh cassidy | fair city | 1995- | 19 years
-row 39 : tommy o'neill | john deegan | fair city | 2001- | 13 years
-row 40 : seamus moran | mike gleeson | fair city | 1996 - 2008 | 12 years
-row 41 : rebecca smith | annette daly | fair city | 1997 - 2009 | 12 years
-row 42 : grace barry | mary - ann byrne | glenroe | 1990 - 2001 | 11 years
-row 43 : gemma doorly | sarah o'leary | fair city | 2001 - 2011 | 10 years
-*/
-statement : seamus moran and rebecca smith were in soap operas for a duration of 12 years.
-explain : the statement want to check seamus moran and rebecca smith in the table. row 40 describes seamus moran were in soap operas for a duration of 12 years. row 41 describes rebecca smith were in soap operas for a duration of 12 years
-The answer is : f_row([row 40, row 41])
-
-/*
-table caption : jeep grand cherokee.
-col : years | displacement | engine | power | torque
-row 1 : 1999 - 2004 | 4.0l (242cid) | power tech i6 | - | 3000 rpm
-row 2 : 1999 - 2004 | 4.7l (287cid) | powertech v8 | - | 3200 rpm
-row 3 : 2002 - 2004 | 4.7l (287cid) | high output powertech v8 | - | -
-row 4 : 1999 - 2001 | 3.1l diesel | 531 ohv diesel i5 | - | -
-row 5 : 2002 - 2004 | 2.7l diesel | om647 diesel i5 | - | -
-*/
-statement : the jeep grand cherokee with the om647 diesel i5 had the third lowest numbered displacement.
-explain : the statement want to check the om647 diesel i5 had third lowest numbered displacement. so we need first three low numbered displacement and all rows that power is om647 diesel i5.
-The answer is : f_row([row 5, row 4, row 1])"""
+from operations.sel_col_row_prompts import select_row_demo
 
 
 def select_row_build_prompt(table_text, statement, table_caption=None, num_rows=100):
