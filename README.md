@@ -10,6 +10,12 @@ conda activate cotable
 pip install -r requirements.txt 
 ```
 
+## Data
+
+```shell
+unzip data.zip
+```
+
 ## Command Usages
 
 ### Arguments

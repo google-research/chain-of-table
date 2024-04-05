@@ -19,7 +19,7 @@ import re
 import numpy as np
 from utils.helper import table2df, NoIndent, MyEncoder
 
-from operations.sel_col_row_prompts import select_column_demo
+from third_party.sel_col_row_prompts.sel_col_row_prompts import select_column_demo
 
 
 def twoD_list_transpose(arr, keep_num_rows=3):

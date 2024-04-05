@@ -18,7 +18,7 @@ import re
 import numpy as np
 from utils.helper import table2string
 
-from operations.sel_col_row_prompts import select_row_demo
+from third_party.sel_col_row_prompts.sel_col_row_prompts import select_row_demo
 
 
 def select_row_build_prompt(table_text, statement, table_caption=None, num_rows=100):
