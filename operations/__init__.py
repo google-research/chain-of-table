@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-from .add_col import add_column_func, add_column_act
+from .add_column import add_column_func, add_column_act
 from .group_by import group_column_func, group_column_act
 from .select_column import select_column_func, select_column_act
 from .select_row import select_row_func, select_row_act
