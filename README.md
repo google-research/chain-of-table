@@ -2,6 +2,8 @@
 
 Code for paper [Chain-of-Table: Evolving Tables in the Reasoning Chain for Table Understanding](https://arxiv.org/abs/2401.04398)
 
+***Disclaimer:** "This is not an officially supported Google product."*
+
 ## Environment
 
 ```shell
