@@ -53,4 +53,7 @@ def tabfact_match_func_for_samples(all_samples, strategy="top"):
         except:
             print(f"Error")
             continue
-    return sum(correct_list) / len(correct_list)
+    if len(correct_list) > 0:
+        return sum(correct_list) / len(correct_list)
+    else:
+        return 0.0

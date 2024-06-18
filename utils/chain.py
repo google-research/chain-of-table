@@ -532,6 +532,8 @@ def dynamic_chain_exec_one_sample(
             debug=debug,
         )
         dynamic_chain_log.append(log)
+        print("Next Operation: ", next_operation)
+        print("log: ", log)
 
         if debug:
             print(next_operation)

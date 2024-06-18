@@ -24,10 +24,24 @@ from utils.chain import *
 from operations import *
 
 
+def pretty_print_table(table):
+    print("Table:")
+    for row in table:
+        print(row)
+
+
+def pretty_print_chain(chain):
+    print("Chain:")
+    for step in chain:
+        print("Operation:", step["operation_name"])
+        print("Parameters:", step["parameter_and_conf"])
+
+
 def main(
     dataset_path: str = "data/tabfact/test.jsonl",
-    raw2clean_path: str ="data/tabfact/raw2clean.jsonl",
-    model_name: str = "gpt-3.5-turbo-16k-0613",
+    raw2clean_path: str = "data/tabfact/raw2clean.jsonl",
+    # model_name: str = "gpt-3.5-turbo-0125",
+    model_name: str = "gpt-4o",
     result_dir: str = "results/tabfact",
     openai_api_key: str = None,
     first_n=-1,
@@ -65,6 +79,23 @@ def main(
     final_result, _ = fixed_chain_exec_mp(gpt_llm, proc_samples, fixed_chain)
     acc = tabfact_match_func_for_samples(final_result)
     print("Accuracy:", acc)
+    print("\n-------------------\n")
+
+    for sample in proc_samples:
+        print("Sample ID:", sample["id"])
+        pretty_print_table(sample["table_text"])
+        print("Statement:", sample["statement"])
+        print("Label:", sample["label"])
+        pretty_print_chain(sample["chain"])
+        print("")
+
+    print("\n-----------------------------------------\n")
+
+    # Uncomment to view all prompts
+    #    for index, log in enumerate(dynamic_chain_log_list):
+    #        print("Question #%d" % index)
+    #        for item in log:
+    #           print(item["prompt"])
 
     print(
         f'Accuracy: {acc}',
